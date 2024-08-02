@@ -35,7 +35,9 @@ app.get("/auth/google/callback", async (req, res) => {
     const { tokens } = await oauth2Client.getToken(code);
     console.log("Tokens:", tokens);
     oauth2Client.setCredentials(tokens);
-    res.redirect(`http://localhost:3000?token=${tokens.access_token}`);
+    res.redirect(
+      `https://youtube-api-huynguyen.netlify.app?token=${tokens.access_token}`
+    );
   } catch (error) {
     console.error("Error getting tokens:", error);
     res.status(500).send("Error during authentication");
